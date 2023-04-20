@@ -16,10 +16,6 @@
             "outFiles": [
                 "${workspaceFolder}/build/**/*.js"
             ],
-            "runtimeArgs": [
-                "-r",
-                "ts-node/register"
-            ],
             "args": [
                 "--port",
                 "5201"

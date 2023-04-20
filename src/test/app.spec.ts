@@ -10,10 +10,10 @@ after(() => {
 });
 
 
-describe('GET /api/version', () => {
-    it('should return "Hello, World!"', async () => {
+describe('GET version', () => {
+    it('Print Version', async () => {
         let response = request.agent(server)
-            .get('/api/version')
+            .get('/version')
         response.expect(200)
         response.end((err, res) => {
             expect(err).to.be.null;

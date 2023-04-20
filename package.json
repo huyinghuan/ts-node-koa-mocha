@@ -1,20 +1,22 @@
 {
-  "name": "zto-server",
+  "name": "APP-Template",
   "version": "1.0.0",
   "packageManager": "yarn@3.5.0",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "node build/index.js --port 5201",
     "dev": "ts-node src/index.ts --port 5201",
-    "test": "mocha --require ts-node/register src/test/*.spec.ts"
+    "test": "mocha src/test/*.spec.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
-    "@types/koa-router": "^7.4.4",
+    "@types/koa": "^2.13.6",
     "@types/koa__cors": "^4.0.0",
+    "@types/koa-router": "^7.4.4",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.11",
     "@types/supertest": "^2.0.12",
+    "@types/yargs": "^17.0.24",
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
     "supertest": "^6.3.3",
@@ -23,11 +25,15 @@
   },
   "dependencies": {
     "@koa/cors": "^4.0.0",
-    "@types/koa": "^2.13.6",
-    "@types/yargs": "^17.0.24",
     "koa": "^2.14.1",
+    "koa-body": "^6.0.1",
     "koa-cors": "^0.0.16",
+    "koa-mount": "^4.0.0",
     "koa-router": "^12.0.0",
+    "koa-static": "^5.0.0",
+    "mysql2": "^3.2.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize-typescript": "^2.1.5",
     "yargs": "^17.7.1"
   }
 }

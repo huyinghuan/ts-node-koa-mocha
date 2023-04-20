@@ -1,3 +1,3 @@
-## Temlate
+## Nodejs Project Temlate
 
-Typescript + Nodejs + Koa + Mocha project template
+Typescript + Nodejs + Koa + msyql + sequelize-typescript + Mocha project template

@@ -1,22 +1,30 @@
 import Koa from 'koa';
-import Router from 'koa-router';
 import cors from '@koa/cors';
-
-import { ReturnCode } from './rcode';
-const PKG = require('../package.json');
-
+import koaBody from 'koa-body';
+import path from 'path';
+import errorMiddleware from './controller/error';
+// import mount from 'koa-mount';
+// import serve from 'koa-static';
+import router from './router';
 const app = new Koa();
-const router = new Router();
-
-router.get('/api/version', (ctx, next) => {
-    ctx.body = ReturnCode({ version: PKG.version });
-});
-
 app.use(cors(
     {
         origin: '*',
         allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     }
 ))
+app.use(koaBody({
+    json: true,
+    multipart: true,
+    // formidable: {
+    //     uploadDir: path.join(process.cwd(), 'tmp'), // 上传文件保存目录
+    //     keepExtensions: true, // 保持文件后缀
+    //     onFileBegin: (name, file: any) => {
+    //         console.log(file)
+    //     },
+    // },
+}))
+//app.use(mount("/public", serve(path.join(process.cwd(), 'static'))));
+app.use(errorMiddleware);
 app.use(router.routes());
 export default app

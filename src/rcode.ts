@@ -1,22 +1,32 @@
 
-interface RCode {
+export interface RCode<T> {
     code: number;
-    message: string;
-    data: any;
-}
-const success: RCode = {
-    code: 0,
-    message: 'success',
-    data: null,
+    msg: string;
+    data?: T;
 }
 
-export const ReturnCode = (data: any): RCode => {
+export function Success<T>(data?: T): RCode<T> {
     return {
         code: 0,
-        message: 'success',
+        msg: "success",
         data: data
     }
 }
-export { RCode, success };
+
+export function Fail(msg: string): RCode<null> {
+    return {
+        code: -1,
+        msg: msg,
+        data: null
+    }
+}
+
+export function ReturnData<T>(data: T): RCode<T> {
+    return {
+        code: 0,
+        msg: 'success',
+        data: data
+    }
+}
 
 
